@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Telecom Customer Churn Prediction</title>
+
+    <!-- Icons font CSS-->
+    <link href="{{ url_for('static', filename='vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet"> 
+    <link href="{{ url_for('static', filename='vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet"> 
+    
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" rel="stylesheet"> 
+
+    <!-- Main CSS-->
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet"> 
+</head>
+<style>
+
+</style>
+<body>
+    <div class="page-wrapper bg-red p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Prediction form</h2>
+                    <form action="/predict" method="post">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="gender">
+                                            <option disabled="disabled" selected="selected">Gender</option>
+                                            <option value="f">female</option>
+      										<option value="m">Male</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-2">
+		                        <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="srcitizen">
+                                        	<option disabled="disabled" selected="selected">Senior Citizen</option>
+                                            <option value="y">Yes</option>
+      										<option value="n">No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+		                        </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="partner">
+                                            <option disabled="disabled" selected="selected">Partner</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="dependents">
+                                            <option disabled="disabled" selected="selected">Dependents</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+		                        <div class="input-group">
+		                            <input class="input--style-2" type="number" placeholder="Tenure" name="tenure">		                            
+		                        </div>
+                            </div>
+                            <div class="col-2">
+		                        <div class="input-group">
+		                            <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="phservices">
+                                            <option disabled="disabled" selected="selected">Phone Services</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+		                        </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="multi">
+                                            <option disabled="disabled" selected="selected">Multiple Lines</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nps">No Phone service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="is">
+                                            <option disabled="disabled" selected="selected">Internet services</option>
+                                            <option value="dsl">DSL</option>
+                                            <option value="fo">Fibre Optics</option>
+										    <option value="n">No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="os">
+                                            <option disabled="disabled" selected="selected">Online Services</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nis">No Internet service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="ob">
+                                            <option disabled="disabled" selected="selected">Online Backup</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nis">No Internet service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="dp">
+                                            <option disabled="disabled" selected="selected">Device Protection</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nis">No Internet service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="ts">
+                                            <option disabled="disabled" selected="selected">Tech Support</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nis">No Internet service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="stv">
+                                            <option disabled="disabled" selected="selected">Streaming TV </option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nis">No Internet service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="smv">
+                                            <option disabled="disabled" selected="selected">Streaming Movies</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+										    <option value="nis">No Internet service</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="contract">
+                                            <option disabled="disabled" selected="selected">Contract </option>
+                                            <option value="mtm">Month to Month</option>
+										    <option value="oyr">One year</option>
+										    <option value="tyrs">Two Years</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="plb">
+                                            <option disabled="disabled" selected="selected">Paperless Billing</option>
+                                            <option value="y">Yes</option>
+										    <option value="n">No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="pmt">
+                                            <option disabled="disabled" selected="selected">Payment Methods</option>
+                                            <option value="ec">Electronic Check</option>
+										    <option value="mail">Mail Check</option>
+										    <option value="bt">Bank Transfer(Automatic)</option>
+										    <option value="cc">Credit Card(Automatic)</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+		                            <input class="input--style-2" type="text" placeholder="Monthly Charges" name="mcharges">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+		                        <div class="input-group">
+		                            <input class="input--style-2" type="text" placeholder="Total Charges" name="tcharges">
+		                        </div>
+                            </div>
+                            
+                        </div>                                                                                                
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        </div>
+                        <div class="row row-space">
+						<div class="p-t-30">
+                            <b>{{z}}</b>
+                        </div>
+						</div>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
+    <!-- Vendor JS-->
+    <script src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}" type="text/javascript"></script>
+    
+
+    <!-- Main JS-->
+    <script src="{{ url_for('static', filename='js/global.js') }}" type="text/javascript"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
